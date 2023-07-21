@@ -1,17 +1,23 @@
 package one.digitalinnovation.gof.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, unique = true)
 	private Long id;
+	@Column(nullable = false)
+	@NotBlank
 	private String nome;
 	@ManyToOne
 	private Endereco endereco;

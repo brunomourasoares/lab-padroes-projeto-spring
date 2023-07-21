@@ -1,7 +1,9 @@
 package one.digitalinnovation.gof.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Os atributos desse modelo foram gerados automaticamente pelo site
@@ -16,11 +18,21 @@ import javax.persistence.Id;
 public class Endereco {
 
 	@Id
+	@Column(nullable = false)
+	@NotBlank
 	private String cep;
+	@Column(nullable = false)
+	@NotBlank
 	private String logradouro;
 	private String complemento;
+	@Column(nullable = false)
+	@NotBlank
 	private String bairro;
+	@Column(nullable = false)
+	@NotBlank
 	private String localidade;
+	@NotBlank
+	@Column(nullable = false)
 	private String uf;
 	private String ibge;
 	private String gia;

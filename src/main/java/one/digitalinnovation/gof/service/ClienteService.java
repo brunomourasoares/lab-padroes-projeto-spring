@@ -1,5 +1,7 @@
 package one.digitalinnovation.gof.service;
 
+import java.util.List;
+
 import one.digitalinnovation.gof.model.Cliente;
 
 /**
@@ -15,10 +17,13 @@ public interface ClienteService {
 
 	Cliente buscarPorId(Long id);
 
+	List<Cliente> buscarPorNome(String nomeParcial);
+
+	List<Cliente> buscarPorBairro(String bairro);
+
 	void inserir(Cliente cliente);
 
 	void atualizar(Long id, Cliente cliente);
 
 	void deletar(Long id);
-
 }

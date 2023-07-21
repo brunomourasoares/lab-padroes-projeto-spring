@@ -1,5 +1,7 @@
 package one.digitalinnovation.gof.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,4 +82,18 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteRepository.save(cliente);
 	}
 
+	@Override
+    public List<Cliente> buscarPorNome(String nomeParcial) {
+        return clienteRepository.findByNomeContainingIgnoreCase(nomeParcial);
+    }
+
+	@Override
+	public List<Cliente> buscarPorBairro(String bairro) {
+		List<Endereco> listaPorBairro = enderecoRepository.findByBairroIgnoreCase(bairro);
+		List<Cliente> listaDeCliente = new ArrayList<>();
+		if (listaPorBairro.isEmpty()) {
+			return listaDeCliente;
+		}
+		return clienteRepository.findByEndereco(listaPorBairro.get(0));
+	}
 }
